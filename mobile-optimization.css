@@ -1,7 +1,7 @@
-/* Mobile-First Responsive Design - Professional & Beautiful */
+/* DISABLED - Mobile Responsive Styles - Show Desktop Version on Mobile */
 
-/* Mobile-First Base Styles */
-@media (max-width: 768px) {
+/* All mobile styles disabled - desktop version will show on mobile */
+@media (max-width: 0px) {
   /* Core Layout Fixes */
   body {
     font-size: 15px !important;

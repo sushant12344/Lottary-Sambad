@@ -524,7 +524,7 @@ button:active {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 0px) {
   body {
     padding: 0 15px;
     margin: 0 auto;
@@ -641,7 +641,7 @@ button:active {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 0px) {
   body {
     padding: 0 10px;
     margin: 0 auto;
@@ -733,7 +733,7 @@ button:active {
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 0px) {
   body {
     padding: 0 8px;
     font-size: 12px;
