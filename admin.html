@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Lottery Admin">
+    <title>Lottery Results Admin Panel</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="browser-compatibility.css">
+    <link rel="stylesheet" href="mobile-optimization.css">
+    <link rel="stylesheet" href="loading-effects.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-container">
+        <div class="login-box">
+            <div class="admin-logo">
+                <h1>🎯 Admin Panel</h1>
+                <p>Lottery Results Management</p>
+            </div>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="admin-password">🔐 Admin Password</label>
+                    <input type="password" id="admin-password" placeholder="Enter admin password" required>
+                </div>
+                <button type="submit" class="login-btn">
+                    <span class="btn-text">🚀 Access Admin Panel</span>
+                </button>
+            </form>
+            <div class="login-footer">
+                <p>Secure admin access for lottery number management</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="dashboard-container" style="display: none;">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <h1>🎯 Lottery Admin Panel</h1>
+                <p>Manage draw results and site settings</p>
+            </div>
+            <div class="header-right">
+                <span id="last-update" class="update-time">Last update: Never</span>
+                <button id="logout-btn" class="logout-btn">🚪 Logout</button>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="admin-nav">
+            <button class="nav-tab active" data-tab="results">📊 Update Results</button>
+            <button class="nav-tab" data-tab="history">📋 History</button>
+            <button class="nav-tab" data-tab="analytics">📈 Analytics</button>
+            <button class="nav-tab" data-tab="settings">⚙️ Settings</button>
+        </nav>
+
+        <!-- Results Update Tab -->
+        <div id="results-tab" class="tab-content active">
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>🏆 Update Lottery Results</h2>
+                    <div class="quick-actions">
+                        <button id="load-current" class="action-btn">📥 Load Current Data</button>
+                        <button id="clear-form" class="action-btn">🗑️ Clear Form</button>
+                        <button id="import-from-text" class="action-btn">📄 Import from Text</button>
+                    </div>
+                </div>
+
+                <form id="lottery-form">
+                    <!-- Draw Info Section -->
+                    <div class="form-section">
+                        <h3>📅 Draw Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="draw-date">Draw Date</label>
+                                <input type="date" id="draw-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="draw-time">Draw Time</label>
+                                <select id="draw-time" required>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                    <option value="20:00">8:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="time-selector">
+                            <label>🕐 Quick Time Selection:</label>
+                            <div class="quick-time-buttons">
+                                <button type="button" class="quick-time-btn active" data-time="13:00">📅 1:00 PM Draw</button>
+                                <button type="button" class="quick-time-btn" data-time="18:00">🌅 6:00 PM Draw</button>
+                                <button type="button" class="quick-time-btn" data-time="20:00">🌙 8:00 PM Draw</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- First Prize Section -->
+                    <div class="form-section">
+                        <h3>🥇 First Prize</h3>
+                        <div class="form-group">
+                            <label for="first-prize">First Prize Number (Format: 65L29688)</label>
+                            <input type="text" id="first-prize" placeholder="Enter first prize number" 
+                                   pattern="[0-9]{2}[A-Z][0-9]{5}" maxlength="8" required>
+                            <small>Format: 2 digits + 1 letter + 5 digits</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="consolation">Consolation Number (Last 5 digits)</label>
+                            <input type="text" id="consolation" placeholder="Auto-generated" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Second Prize Section -->
+                    <div class="form-section">
+                        <h3>🥈 Second Prize (₹9,000/- each) - 10 Numbers Required</h3>
+                        <div class="import-textarea-container">
+                            <label for="second-textarea">Paste numbers (one per line or comma-separated):</label>
+                            <textarea id="second-textarea" class="import-textarea" placeholder="Enter 10 five-digit numbers (e.g., 04347, 17943, ...)" rows="3"></textarea>
+                            <button type="button" id="import-second" class="import-btn">📥 Import Second Prize Numbers</button>
+                        </div>
+                        <div class="prize-grid" id="second-prize-grid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Third Prize Section -->
+                    <div class="form-section">
+                        <h3>🥉 Third Prize (₹450/- each) - 10 Numbers Required</h3>
+                        <div class="import-textarea-container">
+                            <label for="third-textarea">Paste numbers (one per line or comma-separated):</label>
+                            <textarea id="third-textarea" class="import-textarea" placeholder="Enter 10 four-digit numbers (e.g., 0480, 1142, ...)" rows="3"></textarea>
+                            <button type="button" id="import-third" class="import-btn">📥 Import Third Prize Numbers</button>
+                        </div>
+                        <div class="prize-grid" id="third-prize-grid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Fourth Prize Section -->
+                    <div class="form-section">
+                        <h3>🏅 Fourth Prize (₹250/- each) - 10 Numbers Required</h3>
+                        <div class="import-textarea-container">
+                            <label for="fourth-textarea">Paste numbers (one per line or comma-separated):</label>
+                            <textarea id="fourth-textarea" class="import-textarea" placeholder="Enter 10 four-digit numbers (e.g., 0718, 1333, ...)" rows="3"></textarea>
+                            <button type="button" id="import-fourth" class="import-btn">📥 Import Fourth Prize Numbers</button>
+                        </div>
+                        <div class="prize-grid" id="fourth-prize-grid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Fifth Prize Section -->
+                    <div class="form-section">
+                        <h3>🎖️ Fifth Prize (₹120/- each) - 100 Numbers Required</h3>
+                        <div class="import-textarea-container">
+                            <label for="fifth-textarea">Paste numbers (one per line or comma-separated):</label>
+                            <textarea id="fifth-textarea" class="import-textarea" placeholder="Enter 100 four-digit numbers (e.g., 0145, 1572, ...)" rows="8"></textarea>
+                            <button type="button" id="import-fifth" class="import-btn">📥 Import Fifth Prize Numbers</button>
+                        </div>
+                        <div class="fifth-prize-container">
+                            <div class="prize-grid-large" id="fifth-prize-grid">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="form-actions">
+                        <button type="button" id="preview-btn" class="preview-btn">👁️ Preview Changes</button>
+                        <button type="submit" id="save-btn" class="save-btn">💾 Save & Update</button>
+                        <button type="button" id="reset-btn" class="reset-btn">🔄 Reset Form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- History Tab -->
+        <div id="history-tab" class="tab-content">
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>📋 Draw History</h2>
+                    <div class="quick-actions">
+                        <button id="export-history" class="action-btn">📤 Export History</button>
+                        <button id="backup-data" class="action-btn">💾 Create Backup</button>
+                    </div>
+                </div>
+                <div id="history-list" class="history-container">
+                    <!-- History will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div id="analytics-tab" class="tab-content">
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>📈 Analytics Dashboard</h2>
+                </div>
+                <div class="analytics-grid">
+                    <div class="stat-card">
+                        <h3>🎯 Total Draws</h3>
+                        <div class="stat-number" id="total-draws">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>🔥 Most Frequent Numbers</h3>
+                        <div id="frequent-numbers" class="number-list">Loading...</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>📊 Prize Distribution</h3>
+                        <div id="prize-stats" class="stats-list">Loading...</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>⏰ Recent Activity</h3>
+                        <div id="recent-activity" class="activity-list">Loading...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="tab-content">
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>⚙️ System Settings</h2>
+                </div>
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <h3>🔐 Security Settings</h3>
+                        <div class="form-group">
+                            <label for="new-password">Change Admin Password</label>
+                            <input type="password" id="new-password" placeholder="Enter new password">
+                            <button type="button" id="change-password" class="setting-btn">Update Password</button>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <h3>🎨 Display Settings</h3>
+                        <div class="form-group">
+                            <label for="site-title">Site Title</label>
+                            <input type="text" id="site-title" value="Official Lottery Results">
+                            <button type="button" id="update-title" class="setting-btn">Update Title</button>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <h3>📱 AdSense Settings</h3>
+                        <div class="form-group">
+                            <label for="adsense-id">Publisher ID</label>
+                            <input type="text" id="adsense-id" placeholder="ca-pub-XXXXXXXXXX">
+                            <button type="button" id="update-adsense" class="setting-btn">Update AdSense</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>👁️ Preview Changes</h2>
+                <button id="close-preview" class="close-btn">✖️</button>
+            </div>
+            <div class="modal-body" id="preview-content">
+                <!-- Preview content will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-save" class="confirm-btn">✅ Confirm & Save</button>
+                <button id="cancel-preview" class="cancel-btn">❌ Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success/Error Notifications -->
+    <div id="notification" class="notification" style="display: none;"></div>
+
+    <!-- Browser compatibility scripts -->
+    <script src="polyfills.js"></script>
+    <script src="utils.js"></script>
+    <script src="loading-utils.js"></script>
+    
+    <!-- Feature detection for admin script -->
+    <script>
+      // Feature detection for modern JS support
+      if (typeof Promise === 'undefined' || typeof fetch === 'undefined' || typeof Array.prototype.includes === 'undefined') {
+        // Load ES5 compatible version if needed (would need to be created)
+        document.write('<script src="admin-script.js"><\/script>');
+        console.warn('Loading admin script on older browser - some features may be limited');
+      } else {
+        // Load modern version
+        document.write('<script src="admin-script.js"><\/script>');
+      }
+    </script>
+    
+    <!-- Fallback for very old browsers -->
+    <noscript>
+      <p>This admin panel requires JavaScript to function. Please enable JavaScript in your browser.</p>
+    </noscript>
+</body>
+</html>

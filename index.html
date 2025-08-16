@@ -1,0 +1,196 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#667eea">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Lottery Checker">
+  <meta name="description" content="Check your lottery results instantly. View winning numbers for all prize categories including 1st, 2nd, 3rd, 4th, and 5th prizes. Fast, accurate lottery number checker.">
+  <meta name="keywords" content="lottery results, winning numbers, prize check, lottery checker, draw results, winning tickets">
+  <meta name="author" content="Lottery Results Portal">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Lottery Results - Check Your Winning Numbers">
+  <meta property="og:description" content="Instant lottery results checker. Find out if you've won with our comprehensive prize verification system.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Lottery Results - Check Your Winning Numbers | Official Draw Results</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="browser-compatibility.css">
+  <link rel="stylesheet" href="mobile-optimization.css">
+  <link rel="stylesheet" href="loading-effects.css">
+  <link rel="canonical" href="https://yoursite.com/">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <h1>Nagaland State Lotteries</h1>
+    <p>Check your winning numbers instantly</p>
+  </header>
+  
+  <main>
+    <!-- Date and Time Selection -->
+    <section class="date-time-selection" aria-label="Select Date and Time">
+      <div class="selection-container">
+        <div class="date-selection">
+          <label for="date-picker">📅 Select Date:</label>
+          <div class="date-input-wrapper">
+            <input type="date" id="date-picker" />
+          </div>
+        </div>
+        
+        <div class="time-selection">
+          <label>⏰ Select Draw Time:</label>
+          <div class="time-buttons">
+            <button class="time-btn active" data-time="13:00">🕐 1:00 PM</button>
+            <button class="time-btn" data-time="18:00">🕕 6:00 PM</button>
+            <button class="time-btn" data-time="20:00">🕗 8:00 PM</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="current-selection">
+        <span id="selected-info">Showing results for: <strong id="current-date-time">Today - 1:00 PM</strong></span>
+      </div>
+    </section>
+
+    <section class="first-prize" aria-label="First Prize Results">
+      <h2>1st Prize Winner</h2>
+      <div class="number" id="first-prize-number">65L29688</div>
+      <div class="time" id="draw-datetime">Latest Draw</div>
+    </section>
+    <section class="first-prize-desc" aria-label="Consolation Prize Information">
+      <p>Consolation Prize Amount: ₹1,000/- for <span id="consolation-number">29688</span> (all remaining Serial & Series of 1st Prize No.)</p>
+    </section>
+
+    <section class="prize-row" aria-label="Second Prize Results">
+      <div class="prize-info">
+        <strong>2nd Prize</strong>
+        <span>Winning Amount</span>
+        <strong>₹9,000/-</strong>
+      </div>
+      <div class="prize-numbers" id="second-prize-numbers">
+        <span>04347</span><span>17943</span><span>18402</span><span>21140</span><span>34235</span>
+        <span>47484</span><span>55668</span><span>85007</span><span>86622</span><span>98536</span>
+      </div>
+    </section>
+
+    <section class="prize-row" aria-label="Third Prize Results">
+      <div class="prize-info">
+        <strong>3rd Prize</strong>
+        <span>Winning Amount</span>
+        <strong>₹450/-</strong>
+      </div>
+      <div class="prize-numbers" id="third-prize-numbers">
+        <span>0480</span><span>1142</span><span>1510</span><span>4697</span><span>4888</span>
+        <span>5421</span><span>5786</span><span>6929</span><span>8269</span><span>9784</span>
+      </div>
+    </section>
+
+    <section class="prize-row" aria-label="Fourth Prize Results">
+      <div class="prize-info">
+        <strong>4th Prize</strong>
+        <span>Winning Amount</span>
+        <strong>₹250/-</strong>
+      </div>
+      <div class="prize-numbers" id="fourth-prize-numbers">
+        <span>0718</span><span>1333</span><span>3925</span><span>3962</span><span>4938</span>
+        <span>5498</span><span>5616</span><span>7592</span><span>9550</span><span>9858</span>
+      </div>
+    </section>
+
+    <section class="fifth-prize" aria-label="Fifth Prize Results">
+      <h3>5th Prize Winners - Amount: ₹120/-</h3>
+      <div class="fifth-prize-grid" id="fifth-prize-numbers">
+        <!-- Numbers will be loaded dynamically from JSON -->
+      </div>
+    </section>
+
+    <!-- AdSense Ad Unit 1 -->
+    <div class="ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <section class="ticket-checker" aria-label="Ticket Number Checker">
+      <h3>Check Your Ticket Number</h3>
+      <div class="input-group">
+        <label for="ticket-input" class="sr-only">Enter your ticket number</label>
+        <input type="text" id="ticket-input" placeholder="Enter your ticket number" aria-describedby="ticket-help">
+        <small id="ticket-help">Enter your complete ticket number to check if you've won</small>
+      </div>
+  
+      <div class="series-selection">
+        <h4>Select Your Series:</h4>
+        <div class="series-buttons">
+          <button class="series-btn active" data-series="5">📋 Series 5</button>
+          <button class="series-btn" data-series="10">📋 Series 10</button>
+          <button class="series-btn" data-series="25">📋 Series 25</button>
+          <button class="series-btn" data-series="50">📋 Series 50</button>
+          <button class="series-btn" data-series="100">📋 Series 100</button>
+          <button class="series-btn" data-series="200">📋 Series 200</button>
+        </div>
+      </div>
+      <button onclick="checkTicket()" type="button">Check My Ticket</button>
+      
+      <div id="result" aria-live="polite"></div>
+    </section>
+    
+    <!-- AdSense Ad Unit 2 -->
+    <div class="ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Lottery Results Portal. All rights reserved.</p>
+  </footer>
+
+  <!-- Browser compatibility scripts -->
+  <script src="polyfills.js"></script>
+  <script src="utils.js"></script>
+  <script src="loading-utils.js"></script>
+  <script src="draws-data.js"></script>
+  
+  <!-- Detect if modern JS is supported, fallback to ES5 -->
+  <script>
+    // Feature detection for modern JS support
+    if (typeof Promise === 'undefined' || typeof fetch === 'undefined' || typeof Array.prototype.includes === 'undefined') {
+      // Load ES5 compatible version
+      document.write('<script src="script-es5.js"><\/script>');
+    } else {
+      // Load modern version
+      document.write('<script src="script.js"><\/script>');
+    }
+  </script>
+  
+  <!-- Fallback for very old browsers -->
+  <noscript>
+    <p>This website requires JavaScript to function properly. Please enable JavaScript in your browser.</p>
+  </noscript>
+</body>
+</html>
