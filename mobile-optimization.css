@@ -1,7 +1,7 @@
 /* DISABLED - Mobile Responsive Styles - Show Desktop Version on Mobile */
 
 /* All mobile styles disabled - desktop version will show on mobile */
-@media (max-width: 0px) {
+@media (max-width: 768px) {
   /* Core Layout Fixes */
   body {
     font-size: 15px !important;
