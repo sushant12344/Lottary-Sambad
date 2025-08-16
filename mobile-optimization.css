@@ -1,6 +1,6 @@
-/* DISABLED - Mobile Responsive Styles - Show Desktop Version on Mobile */
+/* MOBILE RESPONSIVE STYLES - ENABLED FOR PROPER MOBILE EXPERIENCE */
 
-/* All mobile styles disabled - desktop version will show on mobile */
+/* Core Mobile Layout Fixes */
 @media (max-width: 768px) {
   /* Core Layout Fixes */
   body {

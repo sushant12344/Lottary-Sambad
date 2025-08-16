@@ -1,0 +1,245 @@
+/* COLOR CONSISTENCY FIX FOR MOBILE AND DESKTOP */
+
+:root {
+  /* Brand Colors */
+  --primary-blue: #667eea;
+  --primary-purple: #764ba2;
+  --primary-red: #e74c3c;
+  --primary-gold: #f8b500;
+  --primary-green: #28a745;
+  
+  /* Background Colors */
+  --bg-gradient-start: #f5f7fa;
+  --bg-gradient-end: #e4edf5;
+  --card-bg-start: #ffffff;
+  --card-bg-end: #f8f9fa;
+  
+  /* Text Colors */
+  --text-primary: #2c3e50;
+  --text-secondary: #495057;
+  --text-muted: #666;
+  --text-white: #ffffff;
+  
+  /* Border Colors */
+  --border-light: rgba(0, 0, 0, 0.05);
+  --border-medium: #dee2e6;
+  --border-gold: #ffd700;
+  
+  /* Shadow Colors */
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-gold: rgba(248, 181, 0, 0.3);
+  --shadow-blue: rgba(102, 126, 234, 0.3);
+  
+  /* Prize Colors */
+  --prize-bg-start: #fceabb;
+  --prize-bg-end: #f8b500;
+  --number-bg: rgba(255, 215, 0, 0.15);
+}
+
+/* Apply consistent colors across all devices */
+body {
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Header consistency */
+header {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%) !important;
+}
+
+header h1 {
+  color: var(--text-white) !important;
+}
+
+header p {
+  color: var(--text-white) !important;
+}
+
+/* Card backgrounds */
+.first-prize,
+.prize-row,
+.fifth-prize,
+.date-time-selection,
+.ticket-checker,
+.series-selection {
+  background: linear-gradient(135deg, var(--card-bg-start) 0%, var(--card-bg-end) 100%) !important;
+  border: 1px solid var(--border-light) !important;
+}
+
+/* First prize specific */
+.first-prize {
+  border: 2px solid var(--border-gold) !important;
+}
+
+.first-prize .number {
+  color: var(--primary-red) !important;
+  background: var(--number-bg) !important;
+}
+
+.first-prize .time {
+  color: var(--text-primary) !important;
+  background: rgba(52, 152, 219, 0.1) !important;
+}
+
+/* Prize info sections */
+.prize-info {
+  background: linear-gradient(135deg, var(--prize-bg-start) 0%, var(--prize-bg-end) 100%) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 5px 15px var(--shadow-gold) !important;
+}
+
+/* Prize numbers */
+.prize-numbers span,
+.fifth-prize-grid span {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-light) !important;
+  box-shadow: 0 3px 8px var(--shadow-light) !important;
+}
+
+/* Buttons consistency */
+.time-btn {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  border: 2px solid var(--border-medium) !important;
+  color: var(--text-secondary) !important;
+}
+
+.time-btn.active {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%) !important;
+  border-color: var(--primary-blue) !important;
+  color: var(--text-white) !important;
+  box-shadow: 0 6px 15px var(--shadow-blue) !important;
+}
+
+.series-btn {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+  border: 2px solid var(--border-medium) !important;
+  color: var(--text-secondary) !important;
+}
+
+.series-btn.active {
+  background: linear-gradient(135deg, var(--primary-green) 0%, #20c997 100%) !important;
+  border-color: var(--primary-green) !important;
+  color: var(--text-white) !important;
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4) !important;
+}
+
+/* Main action button */
+button[onclick="checkTicket()"] {
+  background: linear-gradient(135deg, var(--primary-red) 0%, #c0392b 100%) !important;
+  color: var(--text-white) !important;
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4) !important;
+}
+
+/* Input styling */
+#ticket-input {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid var(--border-medium) !important;
+  color: var(--text-primary) !important;
+}
+
+#ticket-input:focus {
+  border-color: var(--primary-red) !important;
+  box-shadow: 0 0 0 3px rgba(221, 51, 51, 0.2), 0 6px 15px rgba(221, 51, 51, 0.3) !important;
+}
+
+/* Date input */
+#date-picker {
+  background: white !important;
+  border: 2px solid var(--border-medium) !important;
+  color: var(--text-primary) !important;
+}
+
+#date-picker:focus {
+  border-color: var(--primary-blue) !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Footer */
+footer {
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: var(--text-muted) !important;
+  border-top: 1px solid var(--border-medium) !important;
+}
+
+footer a {
+  color: var(--primary-blue) !important;
+}
+
+footer a:hover {
+  background: rgba(102, 126, 234, 0.1) !important;
+  color: #5a67d8 !important;
+}
+
+/* Current selection display */
+.current-selection {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%) !important;
+  border: 1px solid #2196f3 !important;
+  color: #1565c0 !important;
+}
+
+.current-selection strong {
+  color: #0d47a1 !important;
+}
+
+/* Typography colors */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+}
+
+h2 {
+  color: var(--text-primary) !important;
+}
+
+h3 {
+  color: #6a0dad !important;
+}
+
+/* Ensure consistent colors on hover states */
+.prize-numbers span:hover,
+.fifth-prize-grid span:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%) !important;
+}
+
+.time-btn:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%) !important;
+}
+
+.series-btn:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%) !important;
+}
+
+button[onclick="checkTicket()"]:hover {
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%) !important;
+}
+
+/* Force color inheritance */
+* {
+  color-scheme: light;
+}
+
+/* Mobile specific color fixes */
+@media (max-width: 768px) {
+  body {
+    background: linear-gradient(135deg, #f8f9fd 0%, #e8ecf7 100%) !important;
+  }
+  
+  /* Ensure all elements maintain their desktop colors on mobile */
+  .first-prize,
+  .prize-row,
+  .fifth-prize,
+  .date-time-selection,
+  .ticket-checker {
+    background: linear-gradient(135deg, var(--card-bg-start) 0%, var(--card-bg-end) 100%) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  /* Text remains readable */
+  .prize-info strong,
+  .prize-info span,
+  .prize-numbers span,
+  .fifth-prize-grid span {
+    color: var(--text-secondary) !important;
+  }
+}
